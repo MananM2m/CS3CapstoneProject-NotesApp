@@ -9,7 +9,7 @@ package com.mycompany.cs3capstoneproject.notesapp;
  * @author mishra_930372
  */
 public class mainWindow extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form mainWindow
      */

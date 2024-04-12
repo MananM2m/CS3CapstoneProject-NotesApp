@@ -13,13 +13,13 @@ import org.mindrot.jbcrypt.BCrypt;
  */
 public class User {
     
-    private String email; //this user’s email
+    
     private String username; //this user’s username
     private String password; //this user’s password - encryped
     private HashMap<Integer,Note> notes; //this user’s list of notes
 
-    public User(String email, String username, String password){
-        this.email = email;
+    public User( String username, String password){
+     
         this.username = username;
         this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }
@@ -32,13 +32,9 @@ public class User {
         return BCrypt.checkpw(password, this.password);
     } 
 
-    public String getEmail() {
-        return email;
-    }
+    
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    
 
     public String getUsername() {
         return username;

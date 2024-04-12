@@ -41,8 +41,6 @@ public class loginWindow extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        textField_email = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -105,15 +103,7 @@ public class loginWindow extends javax.swing.JFrame {
         });
 
         jLabel9.setForeground(new java.awt.Color(242, 0, 0));
-        jLabel9.setText("Username or Email already in use");
-
-        jLabel10.setText("Email");
-
-        textField_email.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                textField_emailKeyReleased(evt);
-            }
-        });
+        jLabel9.setText("Username already in use");
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -124,27 +114,25 @@ public class loginWindow extends javax.swing.JFrame {
                 .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel10))
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jFrame1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jButton3))
                     .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(textField_email, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                        .addComponent(textField_username)
+                        .addComponent(textField_username, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                         .addComponent(textField_password)
                         .addComponent(jTextField5)))
                 .addContainerGap(26, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 81, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(78, 78, 78))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jFrame1Layout.createSequentialGroup()
-                .addContainerGap(64, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel9)
-                .addGap(59, 59, 59))
+                .addGap(79, 79, 79))
         );
         jFrame1Layout.setVerticalGroup(
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,11 +146,7 @@ public class loginWindow extends javax.swing.JFrame {
                         .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(textField_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(textField_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(29, 29, 29)
                         .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(textField_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
@@ -172,7 +156,7 @@ public class loginWindow extends javax.swing.JFrame {
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -273,7 +257,7 @@ public class loginWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       if(app.data.newUser(new User(textField_email.getText(), textField_username.getText(), textField_password.getText()))){
+       if(app.data.newUser(new User( textField_username.getText(), textField_password.getText()))){
            jFrame1.dispose();
            return;
        }
@@ -298,7 +282,7 @@ public class loginWindow extends javax.swing.JFrame {
 
     private void jTextField5KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyReleased
         if(textField_password.getText().equals(jTextField5.getText()) && !textField_username.getText().equals("")
-                && !textField_email.getText().equals("") && !textField_password.getText().equals("")){
+                && !textField_password.getText().equals("")){
            jButton3.setEnabled(true);
        }
        else
@@ -307,25 +291,16 @@ public class loginWindow extends javax.swing.JFrame {
 
     private void textField_usernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textField_usernameKeyReleased
         if(textField_password.getText().equals(jTextField5.getText()) && !textField_username.getText().equals("")
-                && !textField_email.getText().equals("") && !textField_password.getText().equals("")){
+                &&  !textField_password.getText().equals("")){
            jButton3.setEnabled(true);
        }
        else
            jButton3.setEnabled(false);
     }//GEN-LAST:event_textField_usernameKeyReleased
 
-    private void textField_emailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textField_emailKeyReleased
-        if(textField_password.getText().equals(jTextField5.getText()) && !textField_username.getText().equals("")
-                && !textField_email.getText().equals("") && !textField_password.getText().equals("")){
-           jButton3.setEnabled(true);
-       }
-       else
-           jButton3.setEnabled(false);
-    }//GEN-LAST:event_textField_emailKeyReleased
-
     private void textField_passwordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textField_passwordKeyReleased
         if(textField_password.getText().equals(jTextField5.getText()) && !textField_username.getText().equals("")
-                && !textField_email.getText().equals("") && !textField_password.getText().equals("")){
+                &&  !textField_password.getText().equals("")){
            jButton3.setEnabled(true);
        }
        else
@@ -376,7 +351,6 @@ public class loginWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -388,7 +362,6 @@ public class loginWindow extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField textField_email;
     private javax.swing.JTextField textField_password;
     private javax.swing.JTextField textField_username;
     // End of variables declaration//GEN-END:variables

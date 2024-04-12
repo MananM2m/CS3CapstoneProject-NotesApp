@@ -17,7 +17,7 @@ public class Data implements java.io.Serializable{
 	public Data(){
             read();
             users = new HashMap<>();
-            User admin = new User("test@gmail.com","admin","admin123");
+            User admin = new User("admin","admin123");
             users.put("admin", admin);
         } //will call the read method 
 	private void read(){
