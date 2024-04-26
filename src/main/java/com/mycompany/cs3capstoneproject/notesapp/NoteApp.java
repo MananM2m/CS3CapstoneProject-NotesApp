@@ -21,7 +21,6 @@ public class NoteApp {
         if(user != null){
             
             if(user.checkPass(password)){
-                System.out.println("s");
                 loggedIn = user;
                 mainWindow.runMainWindow();
                 return user;
@@ -31,6 +30,8 @@ public class NoteApp {
         }
         return null;
     }
+    
+    public User login(String username)
     
     
     

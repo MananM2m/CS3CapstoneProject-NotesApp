@@ -4,6 +4,9 @@
  */
 package com.mycompany.cs3capstoneproject.notesapp;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *
  * @author mishra_930372
@@ -15,8 +18,12 @@ public class loginWindow extends javax.swing.JFrame {
      */
     private NoteApp app;
     public loginWindow() {
-        initComponents();
         app = new NoteApp();
+        if(app.data.getLoggedIn()!= null){
+            app.login(app.data.getLoggedIn().getUsername())
+        }
+        initComponents();
+        
         jLabel7.setVisible(false);
         jLabel9.setVisible(false);
         
@@ -49,6 +56,7 @@ public class loginWindow extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         jFrame1.setMinimumSize(new java.awt.Dimension(300, 300));
 
@@ -186,6 +194,8 @@ public class loginWindow extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(242, 0, 0));
         jLabel7.setText("Incorrect username/password");
 
+        jCheckBox1.setText("Remember me");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -212,12 +222,14 @@ public class loginWindow extends javax.swing.JFrame {
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(77, 77, 77)
-                        .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 31, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(25, 25, 25))
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(jCheckBox1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel7)))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,11 +244,13 @@ public class loginWindow extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addContainerGap())
         );
@@ -248,6 +262,8 @@ public class loginWindow extends javax.swing.JFrame {
         User b = app.login(jTextField1.getText(), jTextField2.getText());
         
         if(b != null){
+            if(jCheckBox1.isSelected())
+                app.data.setLoggedIn(b);
             app.loggedIn = b;
             this.dispose();
             return;
@@ -311,6 +327,7 @@ public class loginWindow extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -349,6 +366,7 @@ public class loginWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
